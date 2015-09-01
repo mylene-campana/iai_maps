@@ -39,11 +39,18 @@ set(XACRO_FILES
   defs/ias_kitchen/staircase
   room/kitchen_area
   room/staircase
+  room/lab_macros
+  room/room
+  room/shopping_area
+  room/labyrinth
+  room/labyrinth2
   )
 
 SET(XACRO_SRDF_FILES
   room/srdf/kitchen_area
   room/srdf/staircase
+  room/srdf/labyrinth
+  room/srdf/labyrinth2
   )
 
 foreach(it ${XACRO_FILES})
@@ -80,11 +87,15 @@ endforeach(it)
 
 INSTALL(FILES
   ${CMAKE_BINARY_DIR}/room/kitchen_area.urdf
+  ${CMAKE_BINARY_DIR}/room/labyrinth.urdf
+  ${CMAKE_BINARY_DIR}/room/labyrinth2.urdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
   )
 
 INSTALL(FILES
   ${CMAKE_BINARY_DIR}/room/srdf/kitchen_area.srdf
+  ${CMAKE_BINARY_DIR}/room/srdf/labyrinth.srdf
+  ${CMAKE_BINARY_DIR}/room/srdf/labyrinth2.srdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/srdf
   )
 
