@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot name="set">
+  <link name="obstacle_base">
+    <visual>
+      <origin xyz="-2.4 -5.8 0.86" rpy="0 0 1.57079632679"/>
+      <geometry>
+        <mesh filename="package://iai_maps/meshes/set_wine.dae"/>
+      </geometry>
+    </visual>
+	<collision>
+      <origin xyz="-2.4 -5.8 0.86" rpy="0 0 1.57079632679"/>
+      <geometry>
+        <mesh filename="package://iai_maps/meshes/set_wine.dae"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

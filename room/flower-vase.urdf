@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot name="flowers">
+  <link name="obstacle_base">
+    <visual>
+      <origin xyz="-5 -4.9 0.83" rpy="0 0 0"/>
+      <geometry>
+        <box size ="0.4 0.4 0.4"/>
+        <!--<mesh filename="package://iai_maps/meshes/flower-vase.dae"/>-->
+      </geometry>
+    </visual>
+	<collision>
+      <origin xyz="-5 -4.9 0.83" rpy="0 0 0"/>
+      <geometry>
+        <box size ="0.4 0.4 0.4"/> <!-- mesh is too heavy for github -->
+      </geometry>
+    </collision>
+  </link>
+</robot>

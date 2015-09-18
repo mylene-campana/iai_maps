@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot name="chair">
+  <link name="obstacle_base">
+    <visual>
+      <origin xyz="-3.7 -3.1 0.01"/>
+      <geometry>
+        <mesh filename="package://iai_maps/meshes/high_chair.dae"/>
+      </geometry>
+    </visual>
+	<collision>
+      <origin xyz="-3.7 -3.1 0.01"/>
+      <geometry>
+        <mesh filename="package://iai_maps/meshes/high_chair.dae"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

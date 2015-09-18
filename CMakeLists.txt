@@ -140,3 +140,20 @@ INSTALL(FILES
   launch/iai_kitchen_in_rviz.launch
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
   )
+
+INSTALL(FILES
+  room/floor.urdf
+  room/chair.urdf
+  room/set.urdf
+  room/flower-vase.urdf
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
+  )
+INSTALL(FILES
+  meshes/399.jpg
+  meshes/chair.dae
+  meshes/high_chair.dae
+  meshes/set_wine.dae
+  meshes/flower-vase.dae
+  meshes/texture.png
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/meshes
+  )
