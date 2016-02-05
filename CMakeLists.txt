@@ -153,6 +153,7 @@ INSTALL(FILES
   meshes/chair.dae
   meshes/high_chair.dae
   meshes/set_wine.dae
+  meshes/set_wine.stl
   meshes/flower-vase.dae
   meshes/texture.png
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/meshes

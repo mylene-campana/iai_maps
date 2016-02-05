@@ -14,4 +14,25 @@
       </geometry>
     </collision>
   </link>
+
+  <joint name="j_obstacle_base_bis" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="obstacle_base"/>
+    <child link="obstacle_base_bis"/>
+  </joint>
+
+  <link name="obstacle_base_bis">
+    <visual>
+      <origin xyz="-2.4 -5.8 0.86" rpy="0 0 1.57079632679"/>
+      <geometry>
+        <mesh filename="package://iai_maps/meshes/set_wine.dae"/>
+      </geometry>
+    </visual>
+	<collision>
+      <origin xyz="-2.4 -5.8 0.86" rpy="0 0 1.57079632679"/>
+      <geometry>
+        <mesh filename="package://iai_maps/meshes/set_wine.stl"/>
+      </geometry>
+    </collision>
+  </link>
 </robot>
