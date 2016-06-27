@@ -143,6 +143,7 @@ INSTALL(FILES
 
 INSTALL(FILES
   room/floor.urdf
+  room/old_floor.urdf
   room/chair.urdf
   room/set.urdf
   room/flower-vase.urdf
