@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="tunnel">
+  
+  <xacro:include filename="@CMAKE_BINARY_DIR@/defs/util_defs.xacro"/>  
+  <xacro:include filename="@CMAKE_BINARY_DIR@/room/lab_macros.xacro"/>
+
+  
+  <link name="tunnel_link">
+    <!--<sphere_inertia radius="0.001" mass="1"/>-->
+  </link>
+
+<material name="KitchenDarkGray"><color rgba="0.3 1 0.3 0.2"/></material>
+  <!--wall -->
+  
+  <wall name="wall_1g" parent="tunnel" xyz="1 0.75 0.5" sxyz="0.1 0.5 1" material="Gazebo/Red"/>
+ <wall name="wall_1d" parent="tunnel" xyz="1 0.125 0.5" sxyz="0.1 0.25 1" material="Gazebo/Red"/>
+ 	<wall name="wall_2" parent="tunnel" xyz="2 0.375 0.5" sxyz="0.1 0.75 1" material="Gazebo/White"/>
+	<wall name="wall_3b" parent="tunnel" xyz="3 0.5 0.25" sxyz="0.1 1 0.5" material="Gazebo/White"/>
+	<wall name="wall_3h" parent="tunnel" xyz="3 0.75 0.75" sxyz="0.1 0.5 0.5" material="Gazebo/White"/>
+	<wall name="wall_4b" parent="tunnel" xyz="4 0.25 0.25" sxyz="0.1 0.5 0.5" material="Gazebo/White"/>
+	<wall name="wall_4h" parent="tunnel" xyz="4 0.5 0.75" sxyz="0.1 1 0.5" material="Gazebo/White"/>
+
+<!-- bords -->
+	<wall name="wall_D" parent="tunnel" xyz="2.5 0 0.5" sxyz="5 0.02 1" material="Gazebo/BlueTransparent"/>
+	<wall name="wall_G" parent="tunnel" xyz="2.5 1 0.5" sxyz="5 0.02 1" material="KitchenWallWhite"/>
+
+<wall name="floor" parent="tunnel" xyz="2.5 0.5 0" sxyz="5 1 0.02" material="KitchenDarkGray">
+  
+</wall>
+
+
+ 
+</robot>

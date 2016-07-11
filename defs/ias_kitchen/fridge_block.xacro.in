@@ -42,7 +42,7 @@
       name="counter_middle_fridge"
       pos_x="0" pos_y="0" pos_z="0.83"
       roll="0" pitch="0" yaw="0"
-      size_x="0.425" size_y="0.6" size_z="0.03"
+      size_x="0.575" size_y="0.6" size_z="0.03"
       material="KitchenWhite"
     />
 
@@ -84,5 +84,24 @@
     </link>
     
   </macro>
+
+  <!--                  -->
+  <!-- Fridge SRDF Area -->
+  <!--                  -->
+
+  <macro name="fridge_block_srdf" params="block_pos block_rpy">
+
+    <color_counter_srdf name="counter_bottom_fridge" size_x="0.575" size_y="0.6" size_z="0.03" />
+
+    <color_counter_srdf name="counter_middle_fridge" size_x="0.425" size_y="0.6" size_z="0.03" />
+
+    <drawer_srdf name="drawer_fridge_bottom"
+      size_x="0.58" size_y="0.565" size_z="0.365"
+      />
+
+    <fridge_srdf name="fridge" />
+
+  </macro>
+
 
 </robot>

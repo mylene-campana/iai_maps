@@ -3,4 +3,6 @@
   
   <xacro:include filename="@CMAKE_BINARY_DIR@/defs/ias_kitchen/staircase.xacro" />
   
+  <staircase_srdf name="staircase" parent="kitchen" s_x="1" s_y="0.2" s_z="0.1" material="KitchenWhite" />
+  
 </robot>

@@ -12,11 +12,11 @@
   <property name="handle_offset" value="0.045"/>
   <property name="handle_distance" value="0.055"/>
 
-  <!--              -->
-  <!-- Handle Macro -->
-  <!--              -->
+  <!--                       -->
+  <!-- Handle Goemetry Macro -->
+  <!--                       -->
 
-  <macro name="handle" params="parent name pos_x pos_y pos_z roll pitch yaw size_x size_y size_z">
+  <macro name="handle_geometry" params="parent name pos_x pos_y pos_z roll pitch yaw size_x size_y size_z">
 
     <joint name="${parent}_${name}_joint" type="fixed">
       <origin rpy="${roll} ${pitch} ${yaw}" xyz="${pos_x+size_x/2} ${pos_y+size_y/2} ${pos_z+size_z/2}"/>
@@ -48,6 +48,32 @@
       <material value="Ias/KitchenDarkGray" />
     </gazebo>
     
+
+  </macro>
+
+  <!--                         -->
+  <!-- Axial Handle SRDF Macro -->
+  <!--                         -->
+
+  <macro name="axial_handle_srdf" params="parent name position clearance">
+
+    <axial_handle name="${parent}_${name}_handle" clearance="${clearance}">
+      <position>${position}</position>
+      <link name="${name}_link" />
+    </axial_handle>
+
+  </macro>
+
+  <!--                   -->
+  <!-- Handle SRDF Macro -->
+  <!--                   -->
+
+  <macro name="handle_srdf" params="parent name position clearance">
+
+    <handle name="${parent}_${name}_handle" clearance="${clearance}">
+      <position>${position}</position>
+      <link name="${name}_link" />
+    </handle>
 
   </macro>
 
@@ -224,7 +250,7 @@
       <material value="Ias/KitchenLightGray" />
     </gazebo>
     
-    <handle
+    <xacro:handle_geometry
       name="handle_${name}"
       parent="${name}"
       roll="0" pitch="0" yaw="0"
@@ -234,6 +260,36 @@
       size_x="${handle_thickness}"
       size_y="${size_y - 2*handle_offset}"
       size_z="${handle_thickness}" />
+  </macro>
+
+  <!--                   -->
+  <!-- Drawer SRDF Macro -->
+  <!--                   -->
+
+  <macro name="drawer_srdf" params="name size_x size_y size_z">
+
+    <contact name="${name}_bottom_link">
+      <link name="${name}_bottom_link" object="${name}_bottom_link_0"/>
+      <!-- Box size: size_x * size_y * size_z
+              x             y            z     -->
+      <point>
+        ${-size_x/2+0.02+(size_x - 0.04)/2} ${+(size_y - 0.04 - 0.04 - 0.02)/2} ${0.01-size_z/2 + 0.035}
+        ${-size_x/2+0.02+(size_x - 0.04)/2} ${-(size_y - 0.04 - 0.04 - 0.02)/2} ${0.01-size_z/2 + 0.035}
+        ${-size_x/2+0.02-(size_x - 0.04)/2} ${+(size_y - 0.04 - 0.04 - 0.02)/2} ${0.01-size_z/2 + 0.035}
+        ${-size_x/2+0.02-(size_x - 0.04)/2} ${-(size_y - 0.04 - 0.04 - 0.02)/2} ${0.01-size_z/2 + 0.035}
+      </point>
+      <shape>
+        4 0 2 3 1
+      </shape>
+    </contact>
+    
+    <handle_srdf
+      name="handle_${name}"
+      parent="${name}"
+      position="0 0 0 1 0 0 0"
+      clearance="${handle_thickness}"
+      />
+
   </macro>
 
   <!--                       -->
@@ -286,7 +342,7 @@
       <material value="Ias/KitchenLightGray" />
     </gazebo>
     
-    <handle
+    <xacro:handle_geometry
       name="handle_${name}"
       parent="${name}"
       roll="0" pitch="0" yaw="0"
@@ -350,7 +406,7 @@
       <material value="Ias/KitchenLightGray" />
     </gazebo>
     
-    <handle
+    <xacro:handle_geometry
       name="handle_${name}"
       parent="${name}"
       roll="0" pitch="0" yaw="0"
@@ -360,6 +416,21 @@
       size_x="${handle_thickness}"
       size_y="${handle_thickness}"
       size_z="${size_z - 2*handle_offset}"
+    />
+
+  </macro>
+
+
+  <!--                   -->
+  <!-- Fridge SRDF Macro -->
+  <!--                   -->
+
+  <macro name="fridge_srdf" params="name">
+    <handle_srdf
+      name="handle_${name}"
+      parent="${name}"
+      position="0 0 0 0 0 0 1"
+      clearance="${handle_thickness}"
     />
 
   </macro>
@@ -458,9 +529,9 @@
         ${-size_x/2}  ${+size_y/2}  ${size_z/2}
         ${-size_x/2}  ${-size_y/2}  ${size_z/2}
       </point>
-      <triangle>
-        0 1 2 1 3 2
-      </triangle>
+      <shape>
+        4 0 2 3 1
+      </shape>
   </contact>
 
   </macro>

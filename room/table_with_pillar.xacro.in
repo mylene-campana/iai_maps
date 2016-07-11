@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="table_with_pillar">
+  
+  <xacro:include filename="@CMAKE_BINARY_DIR@/defs/ias_kitchen/materials.xacro" />
+  <xacro:include filename="@CMAKE_BINARY_DIR@/defs/ias_kitchen/table.xacro" />
+  <xacro:include filename="@CMAKE_BINARY_DIR@/defs/ias_kitchen/cuboid.xacro" />
+  
+  <!-- This is the top level joint /tf frame. -->
+  <link name="kitchen_link"/>
+
+  <table name="pancake_table" parent="kitchen" block_pos="0 0 0" block_rpy="0 0 1.57" material="KitchenWhite" />
+
+  <color_counter parent="pancake_table_table"
+    name="pillar"
+    pos_x="0.75" pos_y="0.25" pos_z="0.73"
+    roll="0" pitch="0" yaw="0"
+    size_x="0.100" size_y="0.100" size_z="0.5"
+    material="KitchenDarkGray"
+    />
+  
+</robot>

@@ -1,0 +1,26 @@
+language: cpp
+sudo: required
+dist: trusty
+branches:
+  only:
+  - master
+  - devel
+compiler:
+- gcc
+addons:
+  apt:
+    packages:
+      - cmake
+      - git
+      - python2.7-dev
+before_install:
+- git submodule update --init --recursive
+- sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+- sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net --recv-key 0xB01FA116
+- sudo apt-get update -qq
+- sudo apt-get install -qq ros-indigo-xacro python-catkin-pkg ros-indigo-catkin
+- sudo dpkg -L python-catkin-pkg
+- python -c 'import sys; print(sys.path)'
+
+script: .travis/build
+# after_script: ./.travis/run

@@ -49,4 +49,11 @@
     </inertial>
   </macro>
 
+  <!--<macro name="handle" params="name position link clearance">
+    <handle name="${name}" clearance="${clearance}">
+      <position>${position}</position>
+      <link name="${link}" />
+    </handle>
+  </macro>-->
+
 </robot>

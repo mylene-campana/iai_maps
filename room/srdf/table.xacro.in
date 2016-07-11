@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="table_with_pillar">
+  
+  <xacro:include filename="@CMAKE_BINARY_DIR@/defs/ias_kitchen/table.xacro" />
+  <xacro:include filename="@CMAKE_BINARY_DIR@/defs/ias_kitchen/cuboid.xacro" />
+  
+  <!-- This is the top level joint /tf frame. -->
+  <link name="kitchen_link"/>
+
+  <table_srdf name="pancake_table" />
+  
+</robot>

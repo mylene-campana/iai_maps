@@ -129,4 +129,37 @@
   
   </macro>
 
+  <macro name="sink_block_srdf" params="block_pos block_rpy">
+    <color_counter_srdf
+      name="white_counter_top_sink"
+      size_x="0.58" size_y="2.06" size_z="0.002"
+      />
+
+    <drawer_srdf
+      name="drawer_sink_col1_bottom"
+      size_x="0.58" size_y="0.8" size_z="0.29"
+      />
+    <drawer_srdf
+      name="drawer_sink_col1_center"
+      size_x="0.58" size_y="0.8" size_z="0.29"
+      />
+    <drawer_srdf
+      name="drawer_sink_col1_top"
+      size_x="0.58" size_y="0.8" size_z="0.14"
+      />
+    <drawer_srdf
+      name="drawer_sink_col2"
+      size_x="0.58" size_y="0.6" size_z="0.72"
+      />
+    <drawer_srdf
+      name="drawer_sink_col3_bottom"
+      size_x="0.58" size_y="0.6" size_z="0.58"
+      />
+    <drawer_srdf
+      name="drawer_sink_col3_top"
+      size_x="0.58" size_y="0.6" size_z="0.14"
+      />
+
+  </macro>
+
 </robot>

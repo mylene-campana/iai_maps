@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="tunnel">
+  
+  <xacro:include filename="@CMAKE_BINARY_DIR@/defs/util_defs.xacro"/>  
+  <xacro:include filename="@CMAKE_BINARY_DIR@/room/lab_macros.xacro"/>
+
+  
+  <link name="tunnel_link">
+    <!--<sphere_inertia radius="0.001" mass="1"/>-->
+  </link>
+  
+  <!--wall -->
+  
+  <wall name="wall_1g" parent="tunnel" xyz="1 1.5 1" sxyz="0.1 1 2" material="Gazebo/Red"/>
+ <wall name="wall_1d" parent="tunnel" xyz="1 0.25 1" sxyz="0.1 0.5 2" material="Gazebo/Red"/>
+ 	<wall name="wall_2" parent="tunnel" xyz="2 0.75 1" sxyz="0.1 1.5 2" material="Gazebo/White"/>
+	<wall name="wall_3b" parent="tunnel" xyz="3 1 0.5" sxyz="0.1 2 1" material="Gazebo/White"/>
+	<wall name="wall_3h" parent="tunnel" xyz="3 1.5 1.5" sxyz="0.1 1 1" material="Gazebo/White"/>
+	<wall name="wall_4b" parent="tunnel" xyz="4 0.5 0.5" sxyz="0.1 1 1" material="Gazebo/White"/>
+	<wall name="wall_4h" parent="tunnel" xyz="4 1 1.5" sxyz="0.1 2 1" material="Gazebo/White"/>
+
+<!-- bords -->
+	<wall name="wall_D" parent="tunnel" xyz="2.5 0 1" sxyz="5 0.02 2" material="Gazebo/BlueTransparent"/>
+	<wall name="wall_G" parent="tunnel" xyz="2.5 2 1" sxyz="5 0.02 2" material="Gazebo/BlueTransparent"/>
+ 
+</robot>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="floor_with_bar">
+  
+  <xacro:include filename="@CMAKE_BINARY_DIR@/defs/ias_kitchen/materials.xacro" />
+  <xacro:include filename="@CMAKE_BINARY_DIR@/defs/ias_kitchen/furniture_defs.xacro"/>
+
+  <material name="floor">
+    <color rgba="1 1 1 1.0"/>
+  </material>
+  <material name="obstable">
+    <color rgba="0.75 0.75 0.7 1.0"/>
+  </material>
+
+  <link name="base_link"/>
+  <color_counter parent="base"
+    name="floor"
+    pos_x="-50" pos_y="-50" pos_z="-0.011"
+    roll="0" pitch="0" yaw="0"
+    size_x="100" size_y="100" size_z="0.01"
+    material="floor"
+    />
+
+  <color_counter parent="base"
+    name="bar"
+    pos_x="0" pos_y="-50" pos_z="0"
+    roll="0" pitch="0" yaw="0"
+    size_x="0.05" size_y="100" size_z="0.2"
+    material="obstable"
+    />
+
+</robot>

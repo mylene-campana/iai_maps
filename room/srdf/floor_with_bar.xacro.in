@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="floor_with_bar">
+  
+  <xacro:include filename="@CMAKE_BINARY_DIR@/defs/ias_kitchen/furniture_defs.xacro"/>
+
+  <color_counter_srdf
+    name="floor"
+    size_x="100" size_y="100" size_z="0.01"
+    />
+
+  <color_counter_srdf
+    name="bar"
+    size_x="0.05" size_y="100" size_z="0.2"
+    />
+
+</robot>

@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="labyrinth">
+  
+  <xacro:include filename="@CMAKE_BINARY_DIR@/defs/util_defs.xacro"/>  
+  <xacro:include filename="@CMAKE_BINARY_DIR@/room/lab_macros.xacro"/>
+
+  
+  <link name="labyrinth_link">
+    <!--<sphere_inertia radius="0.001" mass="1"/>-->
+  </link>
+  
+  <!-- border -->
+  <wall name="wallEast" parent="labyrinth" xyz="4.5 0 0.5" sxyz="9 0.1 1" material="Gazebo/White"/>
+	<wall name="wallWest" parent="labyrinth" xyz="4.5 12 0.5" sxyz="9 0.1 1" material="Gazebo/White"/>
+	<wall name="wallNorth1" parent="labyrinth" xyz="9 3.5 0.5" sxyz="0.1 7 1" material="Gazebo/White"/>
+	<wall name="wallNorth2" parent="labyrinth" xyz="9 10 0.5" sxyz="0.1 4 1" material="Gazebo/White"/>
+	<wall name="wallSouth1" parent="labyrinth" xyz="0 0.5 0.5" sxyz="0.1 1 1" material="Gazebo/White"/>
+	<wall name="wallSouth2" parent="labyrinth" xyz="0 7 0.5" sxyz="0.1 10 1" material="Gazebo/White"/>
+  
+  
+  <!-- inside horizontal (south to north, east to west) -->
+
+  <wall name="w3" parent="labyrinth" xyz="1 1.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w4" parent="labyrinth" xyz="1 6.5 0.5" sxyz="0.05 3 1" material="Gazebo/White"/>
+  <wall name="w5" parent="labyrinth" xyz="1 10 0.5" sxyz="0.05 2 1" material="Gazebo/White"/>
+
+  <wall name="w6" parent="labyrinth" xyz="2 1.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w7" parent="labyrinth" xyz="2 3.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w8" parent="labyrinth" xyz="2 7 0.5" sxyz="0.05 2 1" material="Gazebo/White"/>
+  <wall name="w9" parent="labyrinth" xyz="2 11 0.5" sxyz="0.05 2 1" material="Gazebo/White"/>
+
+  <wall name="w10" parent="labyrinth" xyz="3 1.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w11" parent="labyrinth" xyz="3 5 0.5" sxyz="0.05 2 1" material="Gazebo/White"/>
+  <wall name="w12" parent="labyrinth" xyz="3 7.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w13" parent="labyrinth" xyz="3 9.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+
+  <wall name="w14" parent="labyrinth" xyz="4 1.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w15" parent="labyrinth" xyz="4 4.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w16" parent="labyrinth" xyz="4 6.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w17" parent="labyrinth" xyz="4 11 0.5" sxyz="0.05 2 1" material="Gazebo/White"/>
+
+  <wall name="w18" parent="labyrinth" xyz="5 2.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w19" parent="labyrinth" xyz="5 4.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w20" parent="labyrinth" xyz="5 6.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w21" parent="labyrinth" xyz="5 10.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+
+  <wall name="w22" parent="labyrinth" xyz="6 3.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w23" parent="labyrinth" xyz="6 5.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w24" parent="labyrinth" xyz="6 7.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w25" parent="labyrinth" xyz="6 10.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+
+  <wall name="w26" parent="labyrinth" xyz="7 2.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w27" parent="labyrinth" xyz="7 4.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w28" parent="labyrinth" xyz="7 6.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w29" parent="labyrinth" xyz="7 9 0.5" sxyz="0.05 2 1" material="Gazebo/White"/>
+  <wall name="w30" parent="labyrinth" xyz="7 11.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+
+  <wall name="w31" parent="labyrinth" xyz="8 0.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w32" parent="labyrinth" xyz="8 4 0.5" sxyz="0.05 4 1" material="Gazebo/White"/>
+  <wall name="w33" parent="labyrinth" xyz="8 8.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+  <wall name="w34" parent="labyrinth" xyz="8 10.5 0.5" sxyz="0.05 1 1" material="Gazebo/White"/>
+
+  <!-- inside vertical (east to west, south to north) -->
+  <wall name="w35" parent="labyrinth" xyz="2.5 1 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+  <wall name="w36" parent="labyrinth" xyz="5.5 1 0.5" sxyz="3 0.05 1" material="Gazebo/White"/>
+
+  <wall name="w37" parent="labyrinth" xyz="1 2 0.5" sxyz="2 0.05 1" material="Gazebo/White"/>
+  <wall name="w38" parent="labyrinth" xyz="3.5 2 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+  <wall name="w39" parent="labyrinth" xyz="6 2 0.5" sxyz="2 0.05 1" material="Gazebo/White"/>
+
+  <wall name="w40" parent="labyrinth" xyz="2.5 3 0.5" sxyz="5 0.05 1" material="Gazebo/White"/>
+  <wall name="w41" parent="labyrinth" xyz="6.5 3 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+
+  <wall name="w42" parent="labyrinth" xyz="0.5 4 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+  <wall name="w43" parent="labyrinth" xyz="3.5 4 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+  <wall name="w44" parent="labyrinth" xyz="5.5 4 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+  <wall name="w45" parent="labyrinth" xyz="7.5 4 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+
+	<wall name="w46" parent="labyrinth" xyz="1.5 5 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+	<wall name="w47" parent="labyrinth" xyz="4.5 5 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+	<wall name="w48" parent="labyrinth" xyz="6.5 5 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+
+	<wall name="w49" parent="labyrinth" xyz="2.5 6 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+	<wall name="w50" parent="labyrinth" xyz="4.5 6 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+	<wall name="w51" parent="labyrinth" xyz="6.5 6 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+
+	<wall name="w52" parent="labyrinth" xyz="3.5 7 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+	<wall name="w53" parent="labyrinth" xyz="5.5 7 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+	<wall name="w54" parent="labyrinth" xyz="8 7 0.5" sxyz="2 0.05 1" material="Gazebo/White"/>
+
+	<wall name="w55" parent="labyrinth" xyz="1.5 8 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+	<wall name="w56" parent="labyrinth" xyz="4 8 0.5" sxyz="2 0.05 1" material="Gazebo/White"/>
+	<wall name="w57" parent="labyrinth" xyz="7 8 0.5" sxyz="2 0.05 1" material="Gazebo/White"/>
+
+	<wall name="w58" parent="labyrinth" xyz="1.5 9 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+	<wall name="w59" parent="labyrinth" xyz="4.5 9 0.5" sxyz="3 0.05 1" material="Gazebo/White"/>
+
+	<wall name="w60" parent="labyrinth" xyz="2.5 10 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+	<wall name="w61" parent="labyrinth" xyz="4.5 10 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+	<wall name="w62" parent="labyrinth" xyz="6.5 10 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+
+	<wall name="w63" parent="labyrinth" xyz="0.5 11 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+	<wall name="w64" parent="labyrinth" xyz="2.5 11 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+	<wall name="w65" parent="labyrinth" xyz="5.5 11 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+	<wall name="w66" parent="labyrinth" xyz="7.5 11 0.5" sxyz="1 0.05 1" material="Gazebo/White"/>
+
+
+  
+</robot>

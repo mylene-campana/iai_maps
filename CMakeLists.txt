@@ -16,10 +16,10 @@
 
 cmake_minimum_required(VERSION 2.6)
 include(cmake/portability.cmake)
+include(cmake/xacro.cmake)
 project(iai_maps)
 
-find_package(catkin REQUIRED COMPONENTS
-  xacro robot_state_chain_publisher geometry_msgs rostime sensor_msgs tf)
+find_package(catkin REQUIRED)
 
 catkin_package()
 
@@ -34,78 +34,124 @@ set(XACRO_FILES
   defs/ias_kitchen/fridge_block
   defs/ias_kitchen/table
   defs/ias_kitchen/cuboid
-  defs/ias_kitchen/shopping_block
+ # defs/ias_kitchen/shopping_block
   defs/ias_kitchen/island_block
   defs/ias_kitchen/staircase
   room/kitchen_area
   room/staircase
+  room/floor_with_bar
+  room/table
+  room/table_with_pillar
   room/lab_macros
-  room/room
-  room/shopping_area
-  room/labyrinth
-  room/labyrinth2
+#  room/shopping_area
+	room/tunnel
+	room/tunnelSmall
+	room/room
+	room/labyrinth
+	room/labyrinth2
+  room/grid
+  room/crack
+  room/hole
+  room/engine_noCable
+  room/funnel
+  room/powerplant
+  room/powerplant_notop
+    room/buildings
   )
 
 SET(XACRO_SRDF_FILES
   room/srdf/kitchen_area
   room/srdf/staircase
-  room/srdf/labyrinth
-  room/srdf/labyrinth2
+  room/srdf/floor_with_bar
+  room/srdf/table
+  room/srdf/table_with_pillar
+#	room/srdf/test
+#	room/srdf/shopping_area
+	room/srdf/worktables
+	room/srdf/lab_macros
+#	room/srdf/bio_area
+	room/srdf/cnc_area
+#	room/srdf/allInOne
+	room/srdf/tunnel
+	room/srdf/room
+	room/srdf/labyrinth
+	room/srdf/labyrinth2
+	room/srdf/tunnelSmall
+  room/srdf/grid
+  room/srdf/crack
+  room/srdf/hole
+  room/srdf/engine_noCable
+  room/srdf/funnel
+  room/srdf/powerplant
+  room/srdf/powerplant_notop
+    room/srdf/buildings
   )
 
 foreach(it ${XACRO_FILES})
-  config_files(${it}.xacro)
-  get_filename_component(basepath ${it} PATH)
-  get_filename_component(basename ${it} NAME)
-  set (basepath ${CMAKE_BINARY_DIR}/${basepath})
-
-  message(" processing xacro file :${basepath}/${basename}.xacro")
-  set(expanded_file "${basepath}/${basename}.urdf")
-  message("  produce expanded file :"${expanded_file})
-  
-  execute_process(
-    COMMAND ${_xacro_py} -o ${expanded_file} ${basepath}/${basename}.xacro
-    )
-  set(URDF_FILES ${URDF_FILES} ${expanded_file})
+ GENERATE_URDF_FILE (${it} "urdf")
 endforeach(it)
 
 foreach(it ${XACRO_SRDF_FILES})
-  config_files(${it}.xacro)
-  get_filename_component(basepath ${it} PATH)
-  get_filename_component(basename ${it} NAME)
-  set (basepath ${CMAKE_BINARY_DIR}/${basepath})
-
-  message(" processing xacro file :${basepath}/${basename}.xacro")
-  set(expanded_file "${basepath}/${basename}.srdf")
-  message("  produce expanded file :"${expanded_file})
-
-  execute_process(
-    COMMAND ${_xacro_py} -o ${expanded_file} ${basepath}/${basename}.xacro
-    )
-  set(SRDF_FILES ${SRDF_FILES} ${expanded_file})
+  GENERATE_URDF_FILE(${it} "srdf")
 endforeach(it)
+
+
+ADD_CUSTOM_TARGET (generate_urdf_file ALL DEPENDS ${ALL_GENERATED_URDF})
 
 INSTALL(FILES
   ${CMAKE_BINARY_DIR}/room/kitchen_area.urdf
-  ${CMAKE_BINARY_DIR}/room/labyrinth.urdf
-  ${CMAKE_BINARY_DIR}/room/labyrinth2.urdf
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
-  )
-
-INSTALL(FILES
-  ${CMAKE_BINARY_DIR}/room/srdf/kitchen_area.srdf
-  ${CMAKE_BINARY_DIR}/room/srdf/labyrinth.srdf
-  ${CMAKE_BINARY_DIR}/room/srdf/labyrinth2.srdf
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/srdf
-  )
-
-INSTALL(FILES
   ${CMAKE_BINARY_DIR}/room/staircase.urdf
+  ${CMAKE_BINARY_DIR}/room/floor_with_bar.urdf
+  ${CMAKE_BINARY_DIR}/room/table.urdf
+  ${CMAKE_BINARY_DIR}/room/table_with_pillar.urdf
+#	${CMAKE_BINARY_DIR}/room/test.urdf
+#	${CMAKE_BINARY_DIR}/room/shopping_area.urdf
+#	${CMAKE_BINARY_DIR}/room/worktables.urdf
+	${CMAKE_BINARY_DIR}/room/lab_macros.urdf
+#	${CMAKE_BINARY_DIR}/room/bio_area.urdf
+#	${CMAKE_BINARY_DIR}/room/cnc_area.urdf
+#	${CMAKE_BINARY_DIR}/room/allInOne.urdf
+	${CMAKE_BINARY_DIR}/room/tunnelSmall.urdf
+	${CMAKE_BINARY_DIR}/room/tunnel.urdf
+	${CMAKE_BINARY_DIR}/room/room.urdf
+	${CMAKE_BINARY_DIR}/room/labyrinth.urdf
+	${CMAKE_BINARY_DIR}/room/labyrinth2.urdf
+#	${CMAKE_BINARY_DIR}/room/backward_easy.urdf
+	${CMAKE_BINARY_DIR}/room/grid.urdf
+	${CMAKE_BINARY_DIR}/room/hole.urdf
+	${CMAKE_BINARY_DIR}/room/crack.urdf
+  ${CMAKE_BINARY_DIR}/room/engine_noCable.urdf
+  ${CMAKE_BINARY_DIR}/room/funnel.urdf
+  ${CMAKE_BINARY_DIR}/room/powerplant.urdf
+  ${CMAKE_BINARY_DIR}/room/powerplant_notop.urdf
+  ${CMAKE_BINARY_DIR}/room/buildings.urdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
   )
+
 
 INSTALL(FILES
   ${CMAKE_BINARY_DIR}/room/srdf/staircase.srdf
+#	${CMAKE_BINARY_DIR}/room/srdf/test.srdf
+#	${CMAKE_BINARY_DIR}/room/srdf/shopping_area.srdf
+	${CMAKE_BINARY_DIR}/room/srdf/worktables.srdf
+	${CMAKE_BINARY_DIR}/room/srdf/lab_macros.srdf
+#	${CMAKE_BINARY_DIR}/room/srdf/bio_area.srdf
+#	${CMAKE_BINARY_DIR}/room/srdf/cnc_area.srdf
+#	${CMAKE_BINARY_DIR}/room/srdf/allInOne.srdf
+	${CMAKE_BINARY_DIR}/room/srdf/tunnel.srdf
+	${CMAKE_BINARY_DIR}/room/srdf/tunnelSmall.srdf
+	${CMAKE_BINARY_DIR}/room/srdf/room.srdf
+	${CMAKE_BINARY_DIR}/room/srdf/labyrinth.srdf
+	${CMAKE_BINARY_DIR}/room/srdf/labyrinth2.srdf
+#	${CMAKE_BINARY_DIR}/room/srdf/backward_easy.srdf
+	${CMAKE_BINARY_DIR}/room/srdf/grid.srdf
+	${CMAKE_BINARY_DIR}/room/srdf/hole.srdf
+	${CMAKE_BINARY_DIR}/room/srdf/crack.srdf
+  ${CMAKE_BINARY_DIR}/room/srdf/engine_noCable.srdf
+  ${CMAKE_BINARY_DIR}/room/srdf/funnel.srdf
+  ${CMAKE_BINARY_DIR}/room/srdf/powerplant.srdf
+  ${CMAKE_BINARY_DIR}/room/srdf/powerplant_notop.srdf
+  ${CMAKE_BINARY_DIR}/room/srdf/buildings.srdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/srdf
   )
 
@@ -128,6 +174,21 @@ INSTALL(FILES
   Media/materials/textures/sink.png
   Media/materials/textures/mittig_neben_roboterplakat.png
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/Media/materials/textures
+)
+
+INSTALL(FILES
+  meshs/backward_easy.dae
+  meshs/backward_easy.stl
+  meshs/grid.stl
+  meshs/grid_light.stl
+  meshs/crack.stl
+  meshs/hole_big.stl
+  meshs/35HP_ENGINE_noCable_easy.stl
+  meshs/cable_funnel_light.stl
+  meshs/powerplant_simplification.stl
+  meshs/powerplant_noTop.stl
+  meshs/buildings_one.stl
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/meshs
 )
 
 INSTALL(FILES
