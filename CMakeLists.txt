@@ -57,6 +57,8 @@ set(XACRO_FILES
   room/powerplant
   room/powerplant_notop
     room/buildings
+    room/buildings_reduced
+    room/town
   )
 
 SET(XACRO_SRDF_FILES
@@ -84,7 +86,9 @@ SET(XACRO_SRDF_FILES
   room/srdf/funnel
   room/srdf/powerplant
   room/srdf/powerplant_notop
+    room/srdf/buildings_reduced
     room/srdf/buildings
+    room/srdf/town
   )
 
 foreach(it ${XACRO_FILES})
@@ -125,6 +129,8 @@ INSTALL(FILES
   ${CMAKE_BINARY_DIR}/room/powerplant.urdf
   ${CMAKE_BINARY_DIR}/room/powerplant_notop.urdf
   ${CMAKE_BINARY_DIR}/room/buildings.urdf
+  ${CMAKE_BINARY_DIR}/room/buildings_reduced.urdf
+  ${CMAKE_BINARY_DIR}/room/town.urdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf
   )
 
@@ -152,6 +158,8 @@ INSTALL(FILES
   ${CMAKE_BINARY_DIR}/room/srdf/powerplant.srdf
   ${CMAKE_BINARY_DIR}/room/srdf/powerplant_notop.srdf
   ${CMAKE_BINARY_DIR}/room/srdf/buildings.srdf
+  ${CMAKE_BINARY_DIR}/room/srdf/buildings_reduced.srdf
+  ${CMAKE_BINARY_DIR}/room/srdf/town.srdf
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/srdf
   )
 
@@ -188,6 +196,9 @@ INSTALL(FILES
   meshs/powerplant_simplification.stl
   meshs/powerplant_noTop.stl
   meshs/buildings_one.stl
+  meshs/buildings_rendering.stl
+  meshs/buildings_reduced.stl
+  meshs/town1.stl
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/meshs
 )
 
