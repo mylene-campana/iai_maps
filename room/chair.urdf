@@ -2,15 +2,20 @@
 <robot name="chair">
   <link name="obstacle_base">
     <visual>
-      <origin xyz="-3.7 -3.1 0.01"/>
+      <!--<origin xyz="-3.7 -3.1 0.01"/>--> <!-- for high_chair.dae -->
+      <origin xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://iai_maps/meshes/high_chair.dae"/>
+        <!--<mesh filename="package://iai_maps/meshes/high_chair.dae"/>-->
+        <mesh filename="package://iai_maps/meshes/high_chair_placed.stl"/>
       </geometry>
+      <material name="White">
+		<color rgba="1 1 1 1"/>
+	  </material>
     </visual>
 	<collision>
-      <origin xyz="-3.7 -3.1 0.01"/>
+      <origin xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://iai_maps/meshes/high_chair.dae"/>
+        <mesh filename="package://iai_maps/meshes/high_chair_placed.stl"/>
       </geometry>
     </collision>
   </link>

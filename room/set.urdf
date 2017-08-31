@@ -2,20 +2,23 @@
 <robot name="set">
   <link name="obstacle_base">
     <visual>
-      <origin xyz="-2.4 -5.8 0.86" rpy="0 0 1.57079632679"/>
+      <origin xyz="-2.41 -5.8 0.865" rpy="0 0 1.5707"/>
       <geometry>
-        <mesh filename="package://iai_maps/meshes/set_wine.dae"/>
+        <mesh filename="package://iai_maps/meshes/set_wine.stl"/>
       </geometry>
+      <material name="White">
+		<color rgba="1 1 1 1"/>
+	  </material>
     </visual>
 	<collision>
-      <origin xyz="-2.4 -5.8 0.86" rpy="0 0 1.57079632679"/>
+      <origin xyz="-2.41 -5.8 0.865" rpy="0 0 1.5707"/>
       <geometry>
-        <mesh filename="package://iai_maps/meshes/set_wine.dae"/>
+        <mesh filename="package://iai_maps/meshes/set_wine.stl"/>
       </geometry>
     </collision>
   </link>
 
-  <joint name="j_obstacle_base_bis" type="fixed">
+  <!--<joint name="j_obstacle_base_bis" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0"/>
     <parent link="obstacle_base"/>
     <child link="obstacle_base_bis"/>
@@ -34,5 +37,5 @@
         <mesh filename="package://iai_maps/meshes/set_wine.stl"/>
       </geometry>
     </collision>
-  </link>
+  </link>-->
 </robot>

@@ -4,7 +4,7 @@
     <visual>
       <origin xyz="-5 -4.9 0.83" rpy="0 0 0"/>
       <geometry>
-        <box size ="0.4 0.4 0.4"/>
+        <!--<box size ="0.4 0.4 0.4"/>-->
         <mesh filename="package://iai_maps/meshes/flower-vase.dae"/>
       </geometry>
     </visual>
